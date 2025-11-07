@@ -1,0 +1,68 @@
+  /* Header */
+  .header{
+    /* Auto layout */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    
+    width: 90%;
+    margin: var(--size-300) auto 0;
+    background: rgba(5, 37, 44, 0.4);
+    border: 1px solid #197686;
+    backdrop-filter: blur(2px);
+    /* Note: backdrop-filter has minimal browser support */
+    
+    border-radius: 24px;
+    }
+    
+    .Primarynav{
+      width: 40%;
+      outline: 2px solid red;
+      min-width: 17rem;
+    }
+    .navlist{
+      /* Frame 1618871077 */
+    
+    /* Auto layout */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      gap: var(--size-400);
+    }
+    
+    .logout-btn, .login *, .register * {
+      background-color: hsl(var(--Strong-cyan));
+      border: none;
+      color: white;
+      padding: 0.4rem 0.8rem;
+      margin-left: var(--size-400);
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    
+    .logout-btn:hover {
+      color: hsl(var(--Dark-Blue-cyan));
+    }
+    
+    .welcome {
+      font-weight: 500;
+      color: hsl(var(--white));
+    }
+    
+    .login *{
+      margin-right: 1rem;
+      
+    }
+    .login *, .register *{
+      color:white;
+      text-decoration: none;
+    }
+    .login *:hover{
+      color: hsl(var(--Dark-Blue-cyan));  
+    }
+    .register *:hover{
+      color: hsl(var(--Dark-Blue-cyan));
+    }
+    

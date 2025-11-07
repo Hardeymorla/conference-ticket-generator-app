@@ -1,0 +1,81 @@
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: hsl(var(--Very-dark-mostly-black-cyan));
+    color: hsl(var(--white));
+  }
+  
+  .auth-form {
+    background: rgba(5, 37, 44, 0.4);
+    border: 1px solid hsl(var(--Strong-cyan) / 0.5);
+    border-radius: 12px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .auth-form h2 {
+    text-align: center;
+    font-family: var(--ff-heading);
+    color: hsl(var(--Strong-cyan));
+  }
+  
+  .auth-form label {
+    display: block;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .auth-form input,
+  .auth-form select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid hsl(var(--Strong-cyan) / 0.5);
+    border-radius: 8px;
+    background-color: transparent;
+    color: hsl(var(--white));
+  }
+  
+  .auth-form button {
+    margin-top: 1.5rem;
+    width: 100%;
+    padding: 0.6rem;
+    background-color: hsl(var(--Strong-cyan));
+    border: none;
+    color: hsl(var(--white));
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  
+  .auth-form button:disabled {
+    background-color: hsl(var(--Dark-Blue-cyan) / 0.5);
+    cursor: not-allowed;
+  }
+  
+  .auth-form button:hover:not(:disabled) {
+    background-color: hsl(var(--Dark-Blue-cyan));
+  }
+  
+  .link {
+    color: hsl(var(--Strong-cyan));
+    cursor: pointer;
+    font-weight: 500;
+  }
+  
+  .error-message {
+    background-color: rgba(255, 77, 77, 0.15);
+    color: #ff4d4d;
+    padding: 0.5rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+  
+  #email {
+    margin-bottom: .5rem;
+  }

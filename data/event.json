@@ -1,0 +1,20 @@
+{
+    "events": [
+        {
+            "id": "e456",
+            "hosterId": "u123",
+            "title": "Tech Conference 2025",
+            "description": "Exploring AI and Web Development Trends",
+            "location": "Lagos, Nigeria",
+            "date": "2025-12-20T10:00:00Z",
+            "category": "Technology",
+            "ticketTypes": [
+              { "type": "Free", "price": 0, "available": 50 },
+              { "type": "VIP", "price": 150, "available": 20 }
+            ],
+            "imageUrl": "event-banner.jpg",
+            "createdAt": "2025-10-05T12:00:00Z"
+          }
+          
+    ]
+}

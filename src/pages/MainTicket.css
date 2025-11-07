@@ -1,0 +1,140 @@
+main{
+    margin: var(--fs-400) auto 0;
+    width: 50%;
+    /* max-width: 33rem; */
+    min-width: 22rem;
+    outline: 2px solid blue;
+    padding-inline: var(--size-700);
+    padding-block: var(--size-500);
+    border-radius: var(--fs-100);
+  }
+  .ticketheader{
+  /* Auto layout */
+  display: flex;
+  justify-content: space-between;
+  border-bottom:2px solid hsl(var(--Strong-cyan) /.5);
+  position: relative;
+  margin-bottom: var(--size-400);
+  }
+  .ticketheader > *{
+    margin-bottom: 0.3rem;
+  }
+  .ticketheader::after{
+    content: '';
+    position: absolute;
+    background-color: hsl(var(--Strong-cyan));
+    width: 50%;
+    height: 2px;
+    top: 100%;
+  }
+  .ticketwrapper{
+    border: 1px solid hsl(var(--Strong-cyan) /.5);
+    border-radius: var(--fs-100);
+    padding: var(--size-300);
+    background: rgba(5, 37, 44, 0.4);
+  }
+  .ticketinfo{
+    border: 1px solid hsl(var(--Strong-cyan) /.5);
+    border-radius: var(--fs-100);
+    text-align: center;
+    padding-block: var(--size-400);
+    position: relative;
+    margin-bottom: var(--size-700);
+  }
+  .ticketinfo > *:where(:not(:last-child)){
+    max-width: 35ch;
+    margin-inline: auto;
+    margin-bottom: var(--size-200);
+  }
+  .ticketinfo > *:where(:last-child){
+    display: flex;
+    justify-content: center;
+  }
+  .CTAlist > *:where(:not(:last-child)){
+    margin-right: var(--size-300);
+  }
+  .CTAheader{
+    font-size: var(--fs-500);
+    font-weight: var(--font-weight-700);
+    margin-bottom: var(--size-300);
+  }
+  .ticketinfo::after{
+    content: '';
+    position: absolute;
+    background-color: hsl(var(--Strong-cyan) / 0.5);
+    width: 100%;
+    height: 2px;
+    bottom: -18%;
+    left: 0;
+  }
+  .tickettype{
+    margin-block: var(--size-300);
+  }
+  .plan{
+    width: 100%;
+    margin-block: var(--size-100);
+    margin-inline: var(--size-100);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--fs-300);
+  
+  }
+  .planchild{
+    border: 1px solid hsl(var(--Strong-cyan) /.5);
+    border-radius: var(--fs-100);
+    flex: 1;
+    padding: var(--size-200);
+    min-width: 12ch;
+  }
+  .planchild:hover{
+    background-color: hsl(var(--Strong-cyan) / .5);
+    cursor: pointer;
+  }
+  .active{
+    background-color: hsl(var(--Strong-cyan) / .5);
+    cursor: pointer;
+  }
+  .small{
+    font-size: .5rem;
+  }
+  label{
+    display: block;
+    font-size: .7rem;
+    margin-bottom: .3rem;
+  }
+  #select{
+    width: 100%;
+    border: 1px solid hsl(var(--Strong-cyan) /.5);
+    border-radius: var(--fs-100);
+    padding-block: .4rem;
+    color: hsl(var(--white));
+    background-color: var(--Dark-Blue-cyan);
+  }
+  #select option{
+    border: 1px solid hsl(var(--Strong-cyan) /.5);
+    border-radius: var(--fs-100);
+    color: hsl(var(--white));
+    background-color: hsl(var(--Dark-Blue-cyan));
+  }
+  .btnwrapper{
+    /* Buttons */
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  flex: 1;
+  margin-top: var(--size-300);
+  }
+  .btnwrapper > *{
+    width: 100%;
+    font-size: .7rem;
+    border: 1px solid hsl(var(--Strong-cyan) /.5);
+    border-radius: var(--fs-100);
+    color: hsl(var(--white));
+    background-color: transparent;
+    padding-block: .5rem;
+  }
+  button:hover{
+    background-color: hsl(var(--Strong-cyan));
+    color: hsl(var(--white));
+  }
