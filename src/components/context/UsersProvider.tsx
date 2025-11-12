@@ -11,7 +11,8 @@ export type UserType = {
   id?: number | string;
   name: string;
   email: string;
-  role?: "joiner" | "hoster";
+  role?: "joiner" | "hoster",
+  hostId?: "hardeymorla";
 };
 
 export type useAuthContextType = {

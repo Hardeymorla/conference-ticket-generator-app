@@ -6,6 +6,7 @@ import "./Home.css"
 
 function HomePage() {
   const { events } = useContext(EventsContext)
+  console.log(events)
   const { currentUser } = useContext(AuthContext)
   const navigate = useNavigate()
 
@@ -13,7 +14,7 @@ function HomePage() {
     if (!currentUser) {
       // If not logged in, show alert or redirect to login page
       alert("Please register or log in to view event details.")
-      localStorage.setItem("redirectAfterAuth", `/events/${eventId}`)
+      // localStorage.setItem("redirectAfterAuth", `/events/${eventId}`)
       navigate("/register")
     } else {
       // If user is logged in, go to event details

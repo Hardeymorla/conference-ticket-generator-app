@@ -5,20 +5,23 @@
       "name": "John Doe",
       "email": "john@example.com",
       "role": "joiner",
-      "password": "12345"
+      "password": "12345",
+      "hostId": "12345"
     },
     {
       "id": "user002",
       "name": "Sarah Events",
       "email": "sarah@events.com",
       "role": "hoster",
-      "password": "12345"
+      "password": "12345",
+      "hostId": "12345"
     },
     {
       "id": "1760698255936",
       "name": "Ibrahim Raheem",
       "email": "ademolaraheemibrahim@gmail.com",
       "password": "hardeymorla",
+      "hostId": "hardeymorla",
       "role": "joiner"
     },
     {
@@ -26,6 +29,14 @@
       "name": "Abraham Loncoln",
       "email": "finesser9994@gmail.com",
       "password": "abraham",
+      "hostId": "abraham",
+      "role": "joiner"
+    },
+    {
+      "id": "1762949344628",
+      "name": "Alade Alade",
+      "email": "ademola9994@gmail.com",
+      "password": "Abusa'd@9994",
       "role": "joiner"
     }
   ]

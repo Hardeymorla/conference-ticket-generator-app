@@ -1,20 +1,115 @@
 {
-    "events": [
+  "events": [
+    {
+      "id": "event001",
+      "title": "Techember Fest ’25",
+      "description": "Join us for an unforgettable tech experience!",
+      "date": "March 15, 2025",
+      "time": "7:00 PM",
+      "location": "Lagos Tech Arena",
+      "hostId": "user002",
+      "tickets": [
         {
-            "id": "e456",
-            "hosterId": "u123",
-            "title": "Tech Conference 2025",
-            "description": "Exploring AI and Web Development Trends",
-            "location": "Lagos, Nigeria",
-            "date": "2025-12-20T10:00:00Z",
-            "category": "Technology",
-            "ticketTypes": [
-              { "type": "Free", "price": 0, "available": 50 },
-              { "type": "VIP", "price": 150, "available": 20 }
-            ],
-            "imageUrl": "event-banner.jpg",
-            "createdAt": "2025-10-05T12:00:00Z"
-          }
-          
-    ]
+          "type": "Regular",
+          "price": "Free",
+          "available": 100,
+          "details": "Regular ACCESS"
+        },
+        {
+          "type": "VIP",
+          "price": 150,
+          "available": 50,
+          "details": "Vip ACCESS"
+        },
+        {
+          "type": "VVIP",
+          "price": 250,
+          "available": 20,
+          "details": "VVIP ACCESS"
+        }
+      ],
+      "imageUrl": "event-banner.jpg",
+      "createdAt": "2025-10-05T12:00:00Z"
+    },
+    {
+      "id": "event002",
+      "title": "Techember Fest ’25",
+      "description": "Join us for an unforgettable tech experience!",
+      "date": "March 15, 2025",
+      "time": "7:00 PM",
+      "location": "Lagos Tech Arena",
+      "hostId": "user002",
+      "tickets": [
+        {
+          "type": "Regular",
+          "price": "Free",
+          "available": 100,
+          "details": "Regular ACCESS"
+        },
+        {
+          "type": "VIP",
+          "price": 150,
+          "available": 50,
+          "details": "Vip ACCESS"
+        },
+        {
+          "type": "VVIP",
+          "price": 250,
+          "available": 20,
+          "details": "VVIP ACCESS"
+        }
+      ],
+      "imageUrl": "event-banner.jpg",
+      "createdAt": "2025-10-05T12:00:00Z"
+    },
+    {
+      "id": "event003",
+      "title": "Techember Fest ’25",
+      "description": "Join us for an unforgettable tech experience!",
+      "date": "March 15, 2025",
+      "time": "7:00 PM",
+      "location": "Lagos Tech Arena",
+      "hostId": "user002",
+      "tickets": [
+        {
+          "type": "Regular",
+          "price": "Free",
+          "available": 100,
+          "details": "Regular ACCESS"
+        },
+        {
+          "type": "VIP",
+          "price": 150,
+          "available": 50,
+          "details": "Vip ACCESS"
+        },
+        {
+          "type": "VVIP",
+          "price": 250,
+          "available": 20,
+          "details": "VVIP ACCESS"
+        }
+      ],
+      "imageUrl": "event-banner.jpg",
+      "createdAt": "2025-10-05T12:00:00Z"
+    },
+    {
+      "id": "7994bdb3-c3d5-4784-8535-108f6948073a",
+      "title": "we are one",
+      "description": "I love that guy",
+      "date": "2025-11-12",
+      "time": "17:18",
+      "location": "Ibadan",
+      "hostId": "host_25337",
+      "tickets": [
+        {
+          "type": "Regular",
+          "price": "Free",
+          "available": 100,
+          "details": "General admission"
+        }
+      ],
+      "createdAt": "2025-11-12T16:19:06.776Z"
+    }
+  ]
 }

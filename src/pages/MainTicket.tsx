@@ -42,14 +42,8 @@ function MainTicket() {
       ticketCount,
       bookedAt: new Date().toISOString(),
     })
-    navigate(`/booking/${event.id}/attendee`, {
-      state: {
-        events,
-        selectedTicket: event.tickets[selectedTicket],
-        ticketCount
-      }
-    })
     console.log(currentBooking)
+    navigate(`/booking/${event.id}/attendee`)
   }
   
   return (

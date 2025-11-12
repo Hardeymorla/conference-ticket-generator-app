@@ -8,7 +8,8 @@
   }
   
   .ticket-ready-content {
-    background: rgba(0, 0, 0, 0.35);
+    background: rgba(5, 37, 44, 0.4);
+    /* background: hsl(var(--very-dark-thick-cyan)); */
     border: 1px solid rgba(0, 255, 255, 0.3);
     border-radius: 16px;
     max-width: 600px;
@@ -20,10 +21,41 @@
 
   .cardview{
     max-width: 420px;
+    background-color:hsl(var(--Very-dark-mostly-black-cyan));
+    /* background: hsl(var(--very-dark-thick-cyan)); */
     border: 1px solid rgba(0, 255, 255, 0.3);
-    padding:2rem;
+    padding:1.5rem;
     justify-self:center;
+
+    --radius:25px;
+    -webkit-mask:
+      radial-gradient(circle var(--radius) at 0 0, transparent 98%, black 100%) top left,
+      radial-gradient(circle var(--radius) at 100% 0, transparent 98%, black 100%) top right,
+      radial-gradient(circle var(--radius) at 100% 100%, transparent 98%, black 100%) bottom right,
+      radial-gradient(circle var(--radius) at 0 100%, transparent 98%, black 100%) bottom left;
+
+    -webkit-mask-size: 50% 50%;
+    -webkit-mask-repeat: no repeat;
+    -webkit-mask-position: top left, top right, bottom right bottom left;
+
+    
+      /* position:relative; */
+    /* background: linear-gradient(cyan, cyan) padding-box,
+                linear-gradient(10deg, cyan, cyan) border-box; */
   }
+
+  /* .cardview::before{
+    content: "";
+    position:absolute;
+    background-color:transparent;
+    border: 10px solid rgba(0, 255, 255, 0.3);
+    border-radius: 25px;
+    inset: 0;
+    top: 0;
+    left:0;
+    bottom: 97%;
+    right: 95%;
+  } */
 
   .ticket-ready-content h3 {
     margin-bottom:var(--size-200);
@@ -67,7 +99,9 @@
     background: rgba(15, 25, 35, 0.7);
     margin-inline:auto;
     outline: 1px solid rgba(0, 255, 255, 0.3);
+    border-radius: 8px;
     margin-top: 1.5rem;
+    /* padding:1px; */
   }
   
   .photo-placeholder {
@@ -86,25 +120,25 @@
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
-    
   }
   
   .details >* {
     word-break:break-all;
-    border: 1px solid rgba(0, 255, 255, 0.3);
-    width: 9.5rem;
+    border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+    width: 9.3rem;
     padding: .5rem;
     text-align: left;
   }
 
   .details p {
-    margin: 0.25rem 0;
+    margin: 0 0 .5rem;
     text-align: left;
     font-size: 0.9rem;
     color:hsl(var(--Gray));
   }
-  .details strong{
-    padding-top: .5rem;
+
+  .ticketfor + p {
+    outline: 5px solid red;
   }
   
   .note {
@@ -120,12 +154,14 @@
     width:100%;
     border: 1px solid rgba(0, 255, 255, 0.3);
     border-radius: 8px;
+    padding-block: 1rem;
   }
   
   .barcode img {
     color:black;
     width: 70%;
     height: 5rem;
+    margin-inline:auto;
     /* filter: sepia(1) saturate(2) hue-rotate(20deg); */
     /* background-color: inherit; */
   }

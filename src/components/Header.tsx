@@ -7,6 +7,14 @@ function Header() {
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
 
+  const handleNavigateToCreateEvents = () => {
+    if (!currentUser) {
+      alert("You must reegister to create events")
+      navigate("/")
+      return
+    }
+  }
+
   const handleLogout = () => {
     logout();
     navigate("/login");
@@ -25,6 +33,13 @@ function Header() {
           <li>About Project</li>
         </ul>
       </nav>
+      <div className="create-events-button"
+        onClick={handleNavigateToCreateEvents}
+      >
+        <Link to="/create-events">
+          Create Events
+        </Link>
+      </div>
       <div>
         {currentUser ? (
           <>

@@ -71,7 +71,7 @@ function Register() {
       }
 
       const newUser = {
-        id: Date.now().toString(),
+        // id: Date.now().toString(),
         name: formData.name,
         email: formData.email,
         password: formData.password,
@@ -84,9 +84,10 @@ function Register() {
       setCurrentUser(response.data);
 
       // Get the Stored Redirected Route
-      const redirectedPath = localStorage.getItem("redirectAfterAuth") || "/";
-      localStorage.removeItem("redirectAfterAuth");
-      navigate(redirectedPath);
+      // const redirectedPath = localStorage.getItem("redirectAfterAuth") || "/";
+      // localStorage.removeItem("redirectAfterAuth");
+      // navigate(redirectedPath);
+      navigate("/");
     } catch (err) {
       setError("Something went wrong. Please try again.");
       console.error(err);

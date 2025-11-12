@@ -6,6 +6,7 @@ import Payment from "./pages/Payment";
 import TicketReady from "./pages/TicketReady";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import CreateEvent from "./pages/CreateEvent";
 
 import { Route, Routes } from "react-router";
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="booking/:id/ticket-ready" element={<TicketReady />} />
         <Route path="register" element={<Register />} />
         <Route path="login" element={<Login />} />
+        <Route path="create-events" element={<CreateEvent />} />
       </Routes>
     </>
   );
