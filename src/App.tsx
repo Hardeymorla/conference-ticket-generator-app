@@ -6,7 +6,7 @@ import Payment from "./pages/Payment";
 import TicketReady from "./pages/TicketReady";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import CreateEvent from "./pages/CreateEvent";
+import CreateEvent from "./pages/CreateEvents";
 
 import { Route, Routes } from "react-router";
 

@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import api from "../api/axios";
 import AuthContext from "../components/context/UsersProvider";
 import { useNavigate, Link } from "react-router";
-import "./Login.css"
+import "./Login.css";
 
 type LoginFormData = {
   email: string;
@@ -19,6 +19,7 @@ function Login() {
   });
 
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -28,10 +29,11 @@ function Login() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+    setLoading(true);
 
     try {
       const response = await api.get(
-        `users?email=${formData.email}&password=${formData.password}`
+        `/users?email=${formData.email}&password=${formData.password}`
       );
 
       if (response.data.length > 0) {
@@ -43,6 +45,8 @@ function Login() {
       }
     } catch (err) {
       setError("Login failed. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -73,11 +77,12 @@ function Login() {
           required
         />
 
-        <button type="submit">Login</button>
+        <button type="submit" disabled={loading}>
+          {loading ? "Logging in..." : "Login"}
+        </button>
 
         <p>
-          Don’t have an account?{" "}
-          <Link to="/register">Register here</Link>
+          Don’t have an account? <Link to="/register">Register here</Link>
         </p>
       </form>
     </main>

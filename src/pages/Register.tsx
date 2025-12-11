@@ -1,10 +1,11 @@
-import { FormEvent, useState } from "react";
+// src/pages/Register.tsx
+import { useState } from "react";
 import { useNavigate } from "react-router";
-import api from "../api/axios"
+import api from "../api/axios";
 import useAuth from "../components/hooks/UseAuth";
 import "./Register.css";
 
-function Register() {
+export default function Register() {
   const navigate = useNavigate();
   const { setCurrentUser } = useAuth();
 
@@ -19,12 +20,14 @@ function Register() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const validateForm = (): boolean => {
+  const validate = () => {
     const { name, email, password, confirmPassword } = formData;
 
     if (!name.trim() || !email.trim() || !password.trim()) {
@@ -52,45 +55,40 @@ function Register() {
     return true;
   };
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!validateForm()) return;
+    if (!validate()) return;
 
     setLoading(true);
 
     try {
       // Check if email already exists
-      const existingUser = await api.get(
-        `/users?email=${formData.email}`
-      );
+      const check = await api.get(`/users?email=${formData.email}`);
 
-      if (existingUser.data.length > 0) {
+      if (check.data.length > 0) {
         setError("Email is already registered.");
         setLoading(false);
         return;
       }
 
-      const newUser = {
-        // id: Date.now().toString(),
-        name: formData.name,
-        email: formData.email,
+      const user = {
+        name: formData.name.trim(),
+        email: formData.email.trim(),
         password: formData.password,
         role: formData.role,
+        createdAt: new Date().toISOString(),
       };
 
-      const response = await api.post("/users", newUser);
+      const res = await api.post("/users", user);
 
-      // Update context
-      setCurrentUser(response.data);
+      // Save user in AuthContext
+      setCurrentUser(res.data);
 
-      // Get the Stored Redirected Route
-      // const redirectedPath = localStorage.getItem("redirectAfterAuth") || "/";
-      // localStorage.removeItem("redirectAfterAuth");
-      // navigate(redirectedPath);
+      // Redirect to home
       navigate("/");
     } catch (err) {
-      setError("Something went wrong. Please try again.");
       console.error(err);
+      setError("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -105,50 +103,51 @@ function Register() {
 
         <label htmlFor="name">Full Name</label>
         <input
-          type="text"
           id="name"
           name="name"
-          placeholder="Enter your full name"
+          type="text"
           value={formData.name}
           onChange={handleChange}
-          required
+          placeholder="Enter your name"
         />
 
         <label htmlFor="email">Email Address</label>
         <input
-          type="email"
           id="email"
           name="email"
-          placeholder="Enter your email"
+          type="email"
           value={formData.email}
           onChange={handleChange}
-          required
+          placeholder="Enter your email"
         />
 
         <label htmlFor="password">Password</label>
         <input
-          type="password"
           id="password"
           name="password"
-          placeholder="Create password"
+          type="password"
           value={formData.password}
           onChange={handleChange}
-          required
+          placeholder="Create password"
         />
 
         <label htmlFor="confirmPassword">Confirm Password</label>
         <input
-          type="password"
           id="confirmPassword"
           name="confirmPassword"
-          placeholder="Confirm password"
+          type="password"
           value={formData.confirmPassword}
           onChange={handleChange}
-          required
+          placeholder="Confirm password"
         />
 
-        <label htmlFor="role">Register as:</label>
-        <select id="role" name="role" value={formData.role} onChange={handleChange}>
+        <label htmlFor="role">Register As</label>
+        <select
+          id="role"
+          name="role"
+          value={formData.role}
+          onChange={handleChange}
+        >
           <option value="joiner">Event Joiner</option>
           <option value="hoster">Event Hoster</option>
         </select>
@@ -167,5 +166,3 @@ function Register() {
     </main>
   );
 }
-
-export default Register;

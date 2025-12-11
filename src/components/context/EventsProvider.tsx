@@ -1,15 +1,16 @@
 import { createContext, useState, useEffect, type ReactElement } from "react";
-import axios from "axios";
+import api from "../../api/axios"; // your custom axios instance
+import useFetch from "../hooks/useFetch";
 
 export type TicketTypes = {
   type: string;
   price: number | "Free";
-  available: number | "string";
+  available: number;
   details: string;
 };
 
 export type EventType = {
-  id: string;
+  id: string;                       
   title: string;
   description: string;
   date: string;
@@ -17,89 +18,117 @@ export type EventType = {
   location: string;
   hostId: string;
   tickets: TicketTypes[];
-  imageUrl?: string; // filename or base64
+  imageUrl?: string;
   createdAt: string;
 };
 
 export type UseEventsContextType = {
   events: EventType[];
-  addEvent: (e: EventType) => void;
-  updateEvent: (id: string, changes: Partial<EventType>) => void;
-  deleteEvent: (id: string) => void;
+  addEvent: (e: EventType) => Promise<void>;
+  updateEvent: (id: string, changes: Partial<EventType>) => Promise<void>;
+  deleteEvent: (id: string) => Promise<void>;
   refreshEvents: () => Promise<void>;
+  loading: boolean;
+  error: string | null;
 };
 
-const initContext: UseEventsContextType = {
+const EventsContext = createContext<UseEventsContextType>({
   events: [],
-  addEvent: () => {},
-  updateEvent: () => {},
-  deleteEvent: () => {},
+  addEvent: async () => {},
+  updateEvent: async () => {},
+  deleteEvent: async () => {},
   refreshEvents: async () => {},
-};
-
-const EventsContext = createContext<UseEventsContextType>(initContext);
+  loading: false,
+  error: null,
+});
 
 type ChildrenType = { children?: ReactElement | ReactElement[] };
 
-const API_URL =  "http://localhost:3000" as string;
-
 export const EventsProvider = ({ children }: ChildrenType): ReactElement => {
+  /**
+   * 1️⃣ Fetch events using your custom React hook
+   *    Only pass endpoint — baseURL already exists in axios.ts
+   */
+  const {
+    data: fetchedEvents,
+    loading,
+    error,
+    refetch,
+  } = useFetch<EventType[]>("/events?_sort=createdAt&_order=desc");
+
+  /**
+   * 2️⃣ Local state so UI updates instantly
+   */
   const [events, setEvents] = useState<EventType[]>([]);
 
-  // fetch events from json-server
-  const refreshEvents = async () => {
-    try {
-      const res = await axios.get<EventType[]>(
-        `${API_URL}/events?_sort=createdAt&_order=desc`
-      );
-      setEvents(res.data);
-    } catch (err) {
-      console.error("Failed to fetch events:", err);
+  /**
+   * 3️⃣ Sync fetched events → local state
+   */
+  useEffect(() => {
+    if (fetchedEvents) {
+      setEvents(fetchedEvents);
     }
+  }, [fetchedEvents]);
+
+  /**
+   * 4️⃣ Refresh events from API
+   */
+  const refreshEvents = async () => {
+    await refetch();
   };
 
-  useEffect(() => {
-    refreshEvents();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  // add event to API and local state
+  /**
+   * 5️⃣ Create event
+   */
   const addEvent = async (event: EventType) => {
     try {
-      const res = await axios.post<EventType>(`${API_URL}/events`, event);
+      const res = await api.post<EventType>("/events", event);
       setEvents((prev) => [res.data, ...prev]);
     } catch (err) {
-      console.error("Failed to create event:", err);
-      // fallback to local only
-      setEvents((prev) => [event, ...prev]);
+      console.error("Failed to add event:", err);
     }
   };
 
-  // update event
+  /**
+   * 6️⃣ Update event
+   */
   const updateEvent = async (id: string, changes: Partial<EventType>) => {
     try {
-      const res = await axios.patch<EventType>(`${API_URL}/events/${id}`, changes);
-      setEvents((prev) => prev.map((ev) => (ev.id === id ? res.data : ev)));
+      const res = await api.patch<EventType>(`/events/${id}`, changes);
+      setEvents((prev) =>
+        prev.map((ev) => (ev.id === id ? res.data : ev))
+      );
     } catch (err) {
       console.error("Failed to update event:", err);
-      setEvents((prev) => prev.map((ev) => (ev.id === id ? { ...ev, ...changes } : ev)));
     }
   };
 
-  // delete event
+  /**
+   * 7️⃣ Delete event
+   */
   const deleteEvent = async (id: string) => {
     try {
-      await axios.delete(`${API_URL}/events/${id}`);
+      await api.delete(`/events/${id}`);
       setEvents((prev) => prev.filter((ev) => ev.id !== id));
     } catch (err) {
       console.error("Failed to delete event:", err);
-      setEvents((prev) => prev.filter((ev) => ev.id !== id)); // best-effort
     }
   };
 
+  /**
+   * 8️⃣ Provide context
+   */
   return (
     <EventsContext.Provider
-      value={{ events, addEvent, updateEvent, deleteEvent, refreshEvents }}
+      value={{
+        events,
+        addEvent,
+        updateEvent,
+        deleteEvent,
+        refreshEvents,
+        loading,
+        error,
+      }}
     >
       {children}
     </EventsContext.Provider>

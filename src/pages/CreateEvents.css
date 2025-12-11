@@ -1,0 +1,96 @@
+/* src/pages/CreateEvent.css */
+
+.create-event-page {
+    max-width: 680px;
+    margin: auto;
+    padding: 24px;
+  }
+  
+  .create-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .create-form {
+    display: grid;
+    gap: 14px;
+  }
+  
+  .create-form input,
+  .create-form textarea {
+    padding: 10px;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+  
+  .row {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .preview-img {
+    width: 160px;
+    margin-top: 8px;
+    border-radius: 8px;
+  }
+  
+  .ticket-section {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    padding: 14px;
+    border-radius: 8px;
+  }
+  
+  .ticket-item {
+    display: grid;
+    gap: 6px;
+    padding: 10px;
+    background: #fafafa;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .remove-btn {
+    background: #b32626;
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .add-ticket-btn {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    background: #008cff;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .btn-group {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .cancel-btn,
+  .submit-btn {
+    padding: 10px 16px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .cancel-btn {
+    background: #ccc;
+  }
+  
+  .submit-btn {
+    background: #0a7ae2;
+    color: white;
+  }
+  
